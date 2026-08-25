@@ -1,0 +1,1 @@
+https://github.com/userdocs/iperf3-static/releases/tag/3.21
