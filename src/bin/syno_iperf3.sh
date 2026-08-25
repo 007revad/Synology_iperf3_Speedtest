@@ -30,7 +30,8 @@ if [[ ! "$streams" =~ ^[0-9]+$ ]] || (( streams < 1 || streams > 128 )); then
     echo "data: error: invalid streams"; echo ""; exit 1
 fi
 
-cmd=(iperf3 -c "$target" -p "$port" -P "$streams" -t 10 --forceflush)
+iperf3=/var/packages/Synoiperf3/ui/bin/iperf3/iperf3
+cmd=("$iperf3" -c "$target" -p "$port" -P "$streams" -t 10 --forceflush)
 [[ "$protocol" == "udp" ]] && cmd+=(-u -b "$bandwidth")
 [[ "$mode" == "download" ]] && cmd+=(-R)
 

@@ -87,7 +87,7 @@ jobs:
           esac
           echo "label=$label" >> $GITHUB_OUTPUT
 
-      - name: Fetch matching iperf3 static binary
+      - name: Select matching iperf3 binary
         run: |
           set -euo pipefail
           case "${{ matrix.arch }}" in
@@ -95,11 +95,13 @@ jobs:
             rtd1296)   asset="iperf3-arm64v8" ;;
             armada38x) asset="iperf3-arm32v7" ;;
             evansport) asset="iperf3-i386" ;;
-            *) echo "::error::No iperf3-static asset mapped for '${{ matrix.arch }}'"; exit 1 ;;
+            *) echo "::error::No iperf3 binary mapped for '${{ matrix.arch }}'"; exit 1 ;;
           esac
-          curl -fsSL -o synology/bin/iperf3 \
-            "https://github.com/userdocs/iperf3-static/releases/latest/download/${asset}"
-          chmod +x synology/bin/iperf3
+          cd src/bin/iperf3
+          mv "$asset" iperf3
+          rm -f iperf3-amd64 iperf3-arm32v7 iperf3-arm64v8 iperf3-i386
+          chmod +x iperf3
+          ls -l .
 
       - name: Synology Package Builder Github Action
         if: steps.check_assets.outputs.spk_count == '0'
