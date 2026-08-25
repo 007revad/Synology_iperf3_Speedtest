@@ -1,10 +1,10 @@
-name: Build n Release CPU Temperature Package
+name: Build n Release Syno iperf3 Package
 
 env:
   # --- Edit these when reusing for a different package ---
-  REPO_NAME: "Syno_CPU_Temperature"
-  SPK_PREFIX: "CPU_Temperature"
-  HELPER_NAME: "synocputemp"
+  REPO_NAME: "Synology_iperf3_Speedtest"
+  SPK_PREFIX: "Synoiperf3"
+  #HELPER_NAME: "synoiperf3"
 
   # --- Runner config, shouldn't need to change ---
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -24,6 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        #arch: ['kvmx64']
         # These 4 cover all models that can use DSM 7
         arch: ['kvmx64', 'rtd1296', 'armada38x', 'evansport']
         #dsm: ['7.0','7.1','7.2','7.3',"7.4"]
@@ -86,6 +87,20 @@ jobs:
           esac
           echo "label=$label" >> $GITHUB_OUTPUT
 
+      - name: Fetch matching iperf3 static binary
+        run: |
+          set -euo pipefail
+          case "${{ matrix.arch }}" in
+            kvmx64)    asset="iperf3-amd64" ;;
+            rtd1296)   asset="iperf3-arm64v8" ;;
+            armada38x) asset="iperf3-arm32v7" ;;
+            evansport) asset="iperf3-i386" ;;
+            *) echo "::error::No iperf3-static asset mapped for '${{ matrix.arch }}'"; exit 1 ;;
+          esac
+          curl -fsSL -o synology/bin/iperf3 \
+            "https://github.com/userdocs/iperf3-static/releases/latest/download/${asset}"
+          chmod +x synology/bin/iperf3
+
       - name: Synology Package Builder Github Action
         if: steps.check_assets.outputs.spk_count == '0'
         #uses: tomgrv/synology-package-builder@v1.3.0
@@ -100,46 +115,46 @@ jobs:
       # errors out - the log shows Synology's own tooling can still emit
       # a .spk in that case. Check the actual built artifact instead of
       # trusting the exit code chain through Synology's build driver.
-      - name: Verify setuid helper compiled correctly
-        if: steps.check_assets.outputs.spk_count == '0'
-        run: |
-          set -euo pipefail
+      # - name: Verify setuid helper compiled correctly
+        # if: steps.check_assets.outputs.spk_count == '0'
+        # run: |
+          # set -euo pipefail
 
-          case "${{ matrix.arch }}" in
-            kvmx64)    expect_arch="x86-64" ;;
-            rtd1296)   expect_arch="ARM aarch64" ;;
-            armada38x) expect_arch="ARM" ;;
-            evansport) expect_arch="Intel 80386" ;;
-            *) echo "::error::No expected ELF arch mapped for '${{ matrix.arch }}'"; exit 1 ;;
-          esac
+          # case "${{ matrix.arch }}" in
+            # kvmx64)    expect_arch="x86-64" ;;
+            # rtd1296)   expect_arch="ARM aarch64" ;;
+            # armada38x) expect_arch="ARM" ;;
+            # evansport) expect_arch="Intel 80386" ;;
+            # *) echo "::error::No expected ELF arch mapped for '${{ matrix.arch }}'"; exit 1 ;;
+          # esac
 
-          spk=$(ls ./dist/*.spk | grep -v _debug | head -n1)
-          if [ -z "$spk" ]; then
-            echo "::error::No non-debug .spk found in ./dist"
-            exit 1
-          fi
+          # spk=$(ls ./dist/*.spk | grep -v _debug | head -n1)
+          # if [ -z "$spk" ]; then
+            # echo "::error::No non-debug .spk found in ./dist"
+            # exit 1
+          # fi
 
-          workdir=$(mktemp -d)
-          tar -xf "$spk" -C "$workdir" package.tgz
-          tar -xf "$workdir/package.tgz" -C "$workdir" bin/helper/${HELPER_NAME}-helper
+          # workdir=$(mktemp -d)
+          # tar -xf "$spk" -C "$workdir" package.tgz
+          # tar -xf "$workdir/package.tgz" -C "$workdir" bin/helper/${HELPER_NAME}-helper
 
-          helper="$workdir/bin/helper/${HELPER_NAME}-helper"
-          if [ ! -s "$helper" ]; then
-            echo "::error::${HELPER_NAME}-helper missing or empty in $spk - helper compile likely failed silently"
-            exit 1
-          fi
+          # helper="$workdir/bin/helper/${HELPER_NAME}-helper"
+          # if [ ! -s "$helper" ]; then
+            # echo "::error::${HELPER_NAME}-helper missing or empty in $spk - helper compile likely failed silently"
+            # exit 1
+          # fi
 
-          file_out=$(file -b "$helper")
-          echo "${HELPER_NAME}-helper: $file_out"
-          case "$file_out" in
-            *"$expect_arch"*) echo "OK: matches expected arch '$expect_arch'" ;;
-            *)
-              echo "::error::${HELPER_NAME}-helper in $spk doesn't look like '$expect_arch' (got: $file_out) - wrong-arch compiler was likely used"
-              exit 1
-              ;;
-          esac
+          # file_out=$(file -b "$helper")
+          # echo "${HELPER_NAME}-helper: $file_out"
+          # case "$file_out" in
+            # *"$expect_arch"*) echo "OK: matches expected arch '$expect_arch'" ;;
+            # *)
+              # echo "::error::${HELPER_NAME}-helper in $spk doesn't look like '$expect_arch' (got: $file_out) - wrong-arch compiler was likely used"
+              # exit 1
+              # ;;
+          # esac
 
-          rm -rf "$workdir"
+          # rm -rf "$workdir"
 
       - name: Remove debug spk and rename package
         if: steps.check_assets.outputs.spk_count == '0'
@@ -162,26 +177,21 @@ jobs:
           tar -cf "$spk" -C "$tmpdir" $(ls "$tmpdir")
           rm -rf "$tmpdir"
 
-      # Only needs to happen once - the noarch/DSM6 output doesn't
-      # depend on which arch built it, and running it per matrix leg
-      # would just produce duplicate, colliding artifacts.
-      - name: Create noarch package for DSM 6
-        if: steps.check_assets.outputs.spk_count == '0' && matrix.arch == 'kvmx64'
+      - name: Create DSM 6 package
+        if: steps.check_assets.outputs.spk_count == '0'
         run: |
-          for f in ./dist/${SPK_PREFIX}-${{ steps.arch_label.outputs.label }}-*.spk; do
-            dsm6="${f/${{ steps.arch_label.outputs.label }}/noarch}"
-            dsm6="${dsm6/${{ steps.dsm_suffix.outputs.suffix }}/DSM-6.x}"
-            tmpdir=$(mktemp -d)
-            tar -xf "$f" -C "$tmpdir"
-            sed -i 's/arch=".*"/arch="noarch"/' "$tmpdir/INFO"
-            sed -i -E 's/os_min_ver="7\.0-[0-9]+"/os_min_ver="6.0-7321"/' "$tmpdir/INFO"
-            sed -i 's/os_max_ver="9.9-99999"/os_max_ver="6.9-99999"/' "$tmpdir/INFO"
-            rm -rf "$tmpdir/WIZARD_UIFILES"
-            rm -rf "$tmpdir/conf"
-            rm -rf "$tmpdir/helper"
-            tar -cf "$dsm6" -C "$tmpdir" $(ls "$tmpdir")
-            rm -rf "$tmpdir"
-          done
+          set -euo pipefail
+          f=$(ls ./dist/${SPK_PREFIX}-${{ steps.arch_label.outputs.label }}-*.spk | grep -v _debug)
+          dsm6="${f/${{ steps.dsm_suffix.outputs.suffix }}/DSM-6.x}"
+          tmpdir=$(mktemp -d)
+          tar -xf "$f" -C "$tmpdir"
+          sed -i -E 's/os_min_ver="7\.0-[0-9]+"/os_min_ver="6.0-7321"/' "$tmpdir/INFO"
+          sed -i 's/os_max_ver="9.9-99999"/os_max_ver="6.9-99999"/' "$tmpdir/INFO"
+          rm -rf "$tmpdir/WIZARD_UIFILES"
+          rm -rf "$tmpdir/conf"
+          rm -rf "$tmpdir/helper"
+          tar -cf "$dsm6" -C "$tmpdir" $(ls "$tmpdir")
+          rm -rf "$tmpdir"
           ls -l ./dist
 
       - name: Upload Package
