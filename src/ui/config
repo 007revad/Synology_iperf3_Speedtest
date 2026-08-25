@@ -1,20 +1,20 @@
 {
   "main.js": {
-    "SYNO.SDS._ThirdParty.App.CPUTemp": {
+    "SYNO.SDS._ThirdParty.App.Synoiperf3": {
       "type": "app",
-      "title": "CPU Temperature",
-      "desc": "Get and log Synology NAS CPU temperature",
+      "title": "Syno iperf3",
+      "desc": "iperf3 package to test network speed between devices",
       "icon": "images/icon_{0}.png",
-      "appWindow": "SYNO.SDS.CPUTemp.MainWindow",
+      "appWindow": "SYNO.SDS.Synoiperf3.MainWindow",
       "allowMultiInstance": false,
       "allowStandalone": true,
       "allUsers": true,
       "grantPrivilege": "all",
       "advanceGrantPrivilege": true
     },
-    "SYNO.SDS.CPUTemp.MainWindow": {
+    "SYNO.SDS.Synoiperf3.MainWindow": {
       "type": "lib",
-      "title": "CPU Temperature",
+      "title": "Syno iperf3",
       "icon": "images/icon_{0}.png"
     }
   }

@@ -2,7 +2,7 @@
   "package": "Synoiperf3",
   "name": "Synoiperf3",
   "version": "1.0.0",
-  "description": "iperf3 package to test netowkr speed between devices",
+  "description": "iperf3 package to test network speed between devices",
   "target": "./src",
   "install_type": "package",
   "install_dep_packages": "",
