@@ -1,12 +1,12 @@
 [
-  { "name": "Singapore, SG", "ip": "89.187.162.1", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
   { "name": "Frankfurt, DE", "ip": "185.102.219.93", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "London, GB", "ip": "185.59.221.51", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "São Paulo, BR", "ip": "138.199.4.1", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "Algiers, DZ", "ip": "41.110.39.130", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "Tel Aviv, IL", "ip": "169.150.202.193", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
   { "name": "New York, US", "ip": "speedtest.nyc1.us.leaseweb.net", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
   { "name": "Dallas, US", "ip": "dal.speedtest.clouvider.net", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
   { "name": "Kansas, US", "ip": "speedtest.nocix.net", "port": 5201, "protocols": ["tcp"], "type": "internet" },
-  { "name": "Sydney, AU", "ip": "speedtest.syd12.au.leaseweb.net", "port": 5201, "protocols": ["tcp"], "type": "internet" }
+  { "name": "London, GB", "ip": "185.59.221.51", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
+  { "name": "Sydney, AU", "ip": "speedtest.syd12.au.leaseweb.net", "port": 5201, "protocols": ["tcp"], "type": "internet" },
+  { "name": "Singapore, SG", "ip": "89.187.162.1", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
+  { "name": "São Paulo, BR", "ip": "138.199.4.1", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
+  { "name": "Tel Aviv, IL", "ip": "169.150.202.193", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
+  { "name": "Algiers, DZ", "ip": "41.110.39.130", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" }
 ]

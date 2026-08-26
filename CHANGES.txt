@@ -1,6 +1,7 @@
 v1.0.4
 - Added a busy spinner to better show when the package is doing something.
 - Changed color of status/error messages to make them more visible.
+- Changed order of public iperf3 servers to match number of people using my packages from each region.
 
 v1.0.3
 - Changed package name that appears in Package Center to Syno iperf3.
