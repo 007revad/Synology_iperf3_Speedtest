@@ -102,9 +102,38 @@ getsettings)
     ;;
 
 setsettings)
-    synosetkeyvalue "$CONF_FILE" default_target "${PARAM[default_target]}"
-    synosetkeyvalue "$CONF_FILE" default_port "${PARAM[default_port]:-5201}"
-    echo '{"success":true}'
+    NEW_TARGET="${PARAM[default_target]}"
+    NEW_PORT="${PARAM[default_port]:-5201}"
+    NEW_SECRET="${PARAM[shared_secret]}"
+
+    if [[ -n "$NEW_TARGET" && ! "$NEW_TARGET" =~ ^[a-zA-Z0-9.-]+$ ]]; then
+        json_response false "Invalid default target" ""
+        exit 0
+    fi
+    if ! [[ "$NEW_PORT" =~ ^[0-9]+$ ]] || (( NEW_PORT < 1 || NEW_PORT > 65535 )); then
+        json_response false "Invalid default port" ""
+        exit 0
+    fi
+    if [[ "$NEW_SECRET" == *'"'* || "$NEW_SECRET" == *'\'* ]]; then
+        json_response false "Shared secret cannot contain \\ or \"" ""
+        exit 0
+    fi
+
+    NEW_SECRET="$(printf '%s' "$NEW_SECRET" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+
+    synosetkeyvalue "$CONF_FILE" default_target "$NEW_TARGET"
+    synosetkeyvalue "$CONF_FILE" default_port "$NEW_PORT"
+    synosetkeyvalue "$CONF_FILE" shared_secret "$NEW_SECRET"
+
+    # Read back what was actually stored - lets the UI confirm the save
+    # matched what the user typed, immediately, rather than them only
+    # noticing a difference later when reopening Settings.
+    SAVED_TARGET=$(synogetkeyvalue "$CONF_FILE" default_target 2>/dev/null)
+    SAVED_SECRET=$(synogetkeyvalue "$CONF_FILE" shared_secret 2>/dev/null)
+    SAVED_TARGET_JSON=$(printf '%s' "$SAVED_TARGET" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+    SAVED_SECRET_JSON=$(printf '%s' "$SAVED_SECRET" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+
+    echo "{\"success\":true,\"saved_default_target\":${SAVED_TARGET_JSON},\"saved_shared_secret\":${SAVED_SECRET_JSON}}"
     ;;
 
 startserver)

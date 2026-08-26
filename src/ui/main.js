@@ -57,7 +57,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             minimizable: true,
             showHelp: false,
             width: 710,
-            height: 560,
+            height: 470,
             html: this.buildHtml(),
             listeners: {
                 afterrender: {
@@ -439,17 +439,83 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         Ext.fly(this.backdropEl).removeClass("open");
     },
 
+    // Mirrors the server-side checks, purely so obviously-invalid input
+    // gets an instant error with no round trip (and no "Saving..."
+    // flash) - the server remains the authoritative check regardless,
+    // in case this ever drifts out of sync with it.
+    validateSettingsInput: function(target, port, secret) {
+        if (target) {
+            if (/^\d+(\.\d+)*$/.test(target)) {
+                // Every label is purely numeric - this is someone
+                // attempting an IPv4 address, not a real hostname (no
+                // real hostname has every label be pure digits).
+                // Validate strictly as an IP; never fall through to the
+                // more permissive hostname rules below, which would
+                // otherwise accept things like 192.168.20.200999 as
+                // "hostname-shaped".
+                var parts = target.split(".");
+                var validIp = parts.length === 4 && parts.every(function(p) {
+                    return p.length <= 3 && parseInt(p, 10) <= 255;
+                });
+                if (!validIp) {
+                    return "Invalid default target";
+                }
+            } else {
+                var hostnameRe = /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.(?!-)[A-Za-z0-9-]{1,63}(?<!-))*$/;
+                if (!hostnameRe.test(target)) {
+                    return "Invalid default target";
+                }
+            }
+        }
+        var portNum = parseInt(port, 10);
+        if (!port || isNaN(portNum) || portNum < 1 || portNum > 65535) {
+            return "Invalid default port";
+        }
+        if (secret.indexOf("\\") !== -1 || secret.indexOf('"') !== -1) {
+            return 'Shared secret cannot contain \\ or "';
+        }
+        return null;
+    },
+
     onSaveSettings: function() {
+        var typedTarget = this.defaultTargetEl.value.trim();
+        var typedPort = this.defaultPortEl.value;
+        var typedSecret = this.sharedSecretEl.value;
+
+        var err = this.validateSettingsInput(typedTarget, typedPort, typedSecret);
+        if (err) {
+            this.setSettingsStatus(err);
+            return;
+        }
+
         this.setSettingsStatus("Saving\u2026");
         SYNO.SDS.Synoiperf3.apiCall("setsettings", {
-            default_target: this.defaultTargetEl.value,
-            default_port: this.defaultPortEl.value,
-            shared_secret: this.sharedSecretEl.value
+            default_target: typedTarget,
+            default_port: typedPort,
+            shared_secret: typedSecret
         }, (function(resp) {
             if (resp && resp.success) {
-                this.setSettingsStatus("");
-                this.closeSettings();
-                this.loadDefaultsIntoForm();
+                var mismatch = [];
+                if (typeof resp.saved_default_target !== "undefined" && resp.saved_default_target !== typedTarget) {
+                    mismatch.push("target");
+                }
+                if (typeof resp.saved_shared_secret !== "undefined" && resp.saved_shared_secret !== typedSecret) {
+                    mismatch.push("shared secret");
+                }
+                if (mismatch.length) {
+                    // Something between typing and storage altered the
+                    // value - show what was actually saved rather than
+                    // leaving the user to discover a silent mismatch
+                    // later, and don't auto-close so they see this.
+                    if (typeof resp.saved_default_target !== "undefined") { this.defaultTargetEl.value = resp.saved_default_target; }
+                    if (typeof resp.saved_shared_secret !== "undefined") { this.sharedSecretEl.value = resp.saved_shared_secret; }
+                    this.setSettingsStatus("Saved, but " + mismatch.join(" and ") +
+                        " changed during save (shown above) - avoid special characters if this matters.");
+                } else {
+                    this.setSettingsStatus("");
+                    this.closeSettings();
+                    this.loadDefaultsIntoForm();
+                }
             } else {
                 this.setSettingsStatus((resp && resp.message) || "Failed to save settings");
             }
