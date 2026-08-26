@@ -9,7 +9,7 @@
 
 ### Description
 
-Synology package to run iperf3 to test the network speed between devices.
+Synology package to run iperf3 to test the network speed between devices and internet speed.
   - Test the speed between 2 local Synology NAS that both have this package installed.
   - Test internet speed from public internet iperf3 servers.
 
