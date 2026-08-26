@@ -88,7 +88,9 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             '  .iperf3-run { border:1px solid #1B8AED !important; background-color:#1B8AED !important; color:#fff !important; }',
             '  .iperf3-run:hover { border:1px solid #057FEB !important; background-color:#057FEB !important; }',
             '  .iperf3-run:disabled { opacity:0.6; cursor:default; }',
-            '  .iperf3-status { flex:1 1 auto; font-size:13px; color:#888; }',
+            '  .iperf3-status { flex:1 1 auto; font-size:13px; color:#555; }',
+            '  .iperf3-spinner { display:none; vertical-align:middle; margin-right:5px; }',
+            '  .iperf3-spinner.show { display:inline-block; }',
             '  .iperf3-log { flex:1 1 auto; margin:0; overflow:auto; background:#161eb5; color:#ddd; padding:8px; font-family:\'Courier New\',monospace; font-size:12px; white-space:pre-wrap; border-radius:4px; }',
             '  .iperf3-modal-backdrop { display:none; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.45); z-index:1000; align-items:center; justify-content:center; }',
             '  .iperf3-modal-backdrop.open { display:flex; }',
@@ -103,7 +105,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             '  .iperf3-cancel:hover { border:1px solid #aaa; background-color:#f0f0f0; }',
             '  .iperf3-save { border:1px solid #1B8AED; background-color:#1B8AED; color:#fff; }',
             '  .iperf3-save:hover { border:1px solid #057FEB; background-color:#057FEB; }',
-            '  .iperf3-settings-status { font-size:12px; color:#888; min-height:16px; }',
+            '  .iperf3-settings-status { font-size:12px; color:#555; min-height:16px; }',
             '</style>',
             '<div class="iperf3-body">',
             '  <div class="iperf3-form">',
@@ -123,7 +125,10 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             '  <div class="iperf3-toolbar">',
             '    <button type="button" class="iperf3-run">Run Speed Test</button>',
             '    <button type="button" class="iperf3-clear">Clear</button>',
-            '    <span class="iperf3-status"></span>',
+            '    <span class="iperf3-status">',
+            '      <img class="iperf3-spinner" src="/webman/3rdparty/Synoiperf3/images/wait_triangle_blue_40p.gif" alt="" width="27" height="27">',
+            '      <span class="iperf3-status-text"></span>',
+            '    </span>',
             '    <button type="button" class="iperf3-settings">Settings</button>',
             '  </div>',
             '  <pre class="iperf3-log">Set a target and click Run Speed Test.</pre>',
@@ -157,6 +162,8 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         var el = this.body.dom;
         this.logEl = el.querySelector(".iperf3-log");
         this.statusEl = el.querySelector(".iperf3-status");
+        this.statusTextEl = el.querySelector(".iperf3-status-text");
+        this.spinnerEl = el.querySelector(".iperf3-spinner");
         this.runBtn = el.querySelector(".iperf3-run");
         this.clearBtn = el.querySelector(".iperf3-clear");
         this.serverSelectEl = el.querySelector(".iperf3-server-select");
@@ -195,8 +202,15 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         this.loadServerList();
     },
 
-    setStatus: function(msg) {
-        if (this.statusEl) { this.statusEl.textContent = msg || ""; }
+    setStatus: function(msg, busy) {
+        if (this.statusTextEl) { this.statusTextEl.textContent = msg || ""; }
+        if (this.spinnerEl) {
+            if (busy && msg) {
+                Ext.fly(this.spinnerEl).addClass("show");
+            } else {
+                Ext.fly(this.spinnerEl).removeClass("show");
+            }
+        }
     },
 
     setSettingsStatus: function(msg) {
@@ -266,7 +280,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
     // handler can look one up by index rather than re-parsing the option.
     loadServerList: function() {
         var self = this;
-        this.setStatus("Finding local servers\u2026");
+        this.setStatus("Finding local servers\u2026", true);
         SYNO.SDS.Synoiperf3.apiCall("discover", {}, function(localResp) {
             SYNO.SDS.Synoiperf3.apiCall("internetservers", {}, function(netResp) {
                 var local = (localResp && localResp.success && localResp.result) ? localResp.result : [];
@@ -296,7 +310,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
                 // Only clear the message if nothing else has taken over
                 // the status text in the meantime (e.g. a test the user
                 // started while this was still loading).
-                if (self.statusEl && self.statusEl.textContent === "Finding local servers\u2026") {
+                if (self.statusTextEl && self.statusTextEl.textContent === "Finding local servers\u2026") {
                     self.setStatus("");
                 }
             });
@@ -348,7 +362,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         }
 
         if (this.selectedServer && this.selectedServer.type === "local") {
-            this.setStatus("Starting remote server\u2026");
+            this.setStatus("Starting remote server\u2026", true);
             this.setRunning(true);
             this.pendingTransaction = SYNO.SDS.Synoiperf3.apiCall("remotestart", {
                 ip: this.selectedServer.ip,
@@ -380,7 +394,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         });
 
         this.clearLog();
-        this.setStatus("Running\u2026");
+        this.setStatus("Running\u2026", true);
         this.setRunning(true);
 
         var es = new EventSource(SYNO.SDS.Synoiperf3.STREAM_PATH + "?" + params);
