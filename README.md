@@ -7,15 +7,16 @@
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/007revad)
 <!--- [![committers.top badge](https://user-badge.committers.top/australia/007revad.svg)](https://user-badge.committers.top/australia/007revad) --->
 
-### Change TEMPLATE.sh in .github/workflows/build_n_release.yml to script's name
-If the repo has multiple files that need to be included in the zip file add them as well, e.g. <br>
-`zip "$zip_name" syno_hdd_db.sh syno_hdd_shutdown.sh syno_hdd_vendors.txt syno_hdd_db.conf`
-
 ### Description
 
 Synology package to run iperf3 to test the network speed between devices.
+  - Test the speed between 2 local Synology NAS that both have this package installed.
+  - Test internet speed from public internet iperf3 servers.
 
 Available for DSM 7 and DSM 6.
+
+**Note:** DSM 6 package only supports 86_64, armv8, armv7 and i686 (**not** x86, armv5, ppc or PowerPC)
+  - For 13 series and older models [check your Synology model's CPU Arch here](https://kb.synology.com/en-global/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have)
 
 ### How to install the package
 
@@ -37,9 +38,29 @@ There are 2 ways to install the package:
 ### Screenshots
 
 <!--- <p align="center">Description of image 1 goes here</p> --->
-<p align="center"><kbd><img src="/images/IMAGE_NAME.png"></kbd></p>
+<p align="center"><kbd><img src="/images/installed.png"></kbd></p>
 
 <br>
 
-<!--- <p align="center">Description of image 2 goes here</p> --->
-<p align="center"><kbd><img src="/images/IMAGE_NAME.png"></kbd></p>
+<p align="center">Select another local Synology or internet iperf3 server</p>
+<p align="center"><kbd><img src="/images/window.png"></kbd></p>
+
+<br>
+
+<p align="center">Testing Synology to Synology speed</p>
+<p align="center"><kbd><img src="/images/window2.png"></kbd></p>
+
+<br>
+
+<p align="center">Testing internet speed</p>
+<p align="center"><kbd><img src="/images/window3.png"></kbd></p>
+
+<br>
+
+<p align="center">Copy the results</p>
+<p align="center"><kbd><img src="/images/save_results.png"></kbd></p>
+
+<br>
+
+<p align="center">Settings</p>
+<p align="center"><kbd><img src="/images/settings.png"></kbd></p>
