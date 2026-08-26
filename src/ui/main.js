@@ -276,7 +276,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
 
                 var html = '<option value="-1">Custom / manual entry</option>';
                 if (local.length) {
-                    html += '<optgroup label="Local NAS running iperf3 Speedtest\u00A0\u00A0\u00A0">';
+                    html += '<optgroup label="Local NAS running Syno iperf3\u00A0\u00A0\u00A0">';
                     local.forEach(function(s) {
                         html += '<option value="' + self.serverList.indexOf(s) + '">' +
                             (s.hostname || s.ip) + '</option>';

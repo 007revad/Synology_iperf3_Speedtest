@@ -1,3 +1,6 @@
+v1.0.3
+- Changed package name that appears in Package Center to Syno iperf3.
+
 v1.0.2
 - Added capability to automatically start iperf3 as a server on other Synology NAS that this package installed and started.
 - Added support for testing against selected public internet iperf3 servers.
