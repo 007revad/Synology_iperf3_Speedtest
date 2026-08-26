@@ -92,8 +92,13 @@ init)
 getsettings)
     TARGET=$(synogetkeyvalue "$CONF_FILE" default_target 2>/dev/null)
     PORT=$(synogetkeyvalue "$CONF_FILE" default_port 2>/dev/null)
+    SECRET=$(synogetkeyvalue "$CONF_FILE" shared_secret 2>/dev/null)
     [ -n "$PORT" ] || PORT=5201
-    echo "{\"success\":true,\"default_target\":\"${TARGET}\",\"default_port\":${PORT}}"
+
+    TARGET_JSON=$(printf '%s' "$TARGET" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+    SECRET_JSON=$(printf '%s' "$SECRET" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+
+    echo "{\"success\":true,\"default_target\":${TARGET_JSON},\"default_port\":${PORT},\"shared_secret\":${SECRET_JSON}}"
     ;;
 
 setsettings)

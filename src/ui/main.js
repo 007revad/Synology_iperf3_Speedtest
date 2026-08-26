@@ -138,6 +138,10 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             '        <label>Default port:</label>',
             '        <input type="number" class="iperf3-default-port" style="width:80px">',
             '      </div>',
+            '      <div class="iperf3-row">',
+            '        <label>Shared secret (must match on every Synology NAS that has this package installed):</label>',
+            '        <input type="text" class="iperf3-shared-secret" style="width:100%" placeholder="e.g. a random string">',
+            '      </div>',
             '      <div class="iperf3-row iperf3-settings-status"></div>',
             '      <div class="iperf3-row iperf3-settings-buttons">',
             '        <button type="button" class="iperf3-cancel">Cancel</button>',
@@ -164,6 +168,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         this.backdropEl = el.querySelector(".iperf3-modal-backdrop");
         this.defaultTargetEl = el.querySelector(".iperf3-default-target");
         this.defaultPortEl = el.querySelector(".iperf3-default-port");
+        this.sharedSecretEl = el.querySelector(".iperf3-shared-secret");
         this.settingsStatusEl = el.querySelector(".iperf3-settings-status");
 
         this.serverList = [];
@@ -419,9 +424,11 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             if (resp && resp.success) {
                 this.defaultTargetEl.value = resp.default_target || "";
                 this.defaultPortEl.value = resp.default_port || 5201;
+                this.sharedSecretEl.value = resp.shared_secret || "";
             } else {
                 this.defaultTargetEl.value = "";
                 this.defaultPortEl.value = 5201;
+                this.sharedSecretEl.value = "";
                 this.setSettingsStatus((resp && resp.message) || "Could not load settings");
             }
             Ext.fly(this.backdropEl).addClass("open");
@@ -436,7 +443,8 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         this.setSettingsStatus("Saving\u2026");
         SYNO.SDS.Synoiperf3.apiCall("setsettings", {
             default_target: this.defaultTargetEl.value,
-            default_port: this.defaultPortEl.value
+            default_port: this.defaultPortEl.value,
+            shared_secret: this.sharedSecretEl.value
         }, (function(resp) {
             if (resp && resp.success) {
                 this.setSettingsStatus("");
