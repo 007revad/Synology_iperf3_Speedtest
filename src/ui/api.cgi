@@ -36,6 +36,23 @@ parse_kv() {
     done
 }
 
+verify_signed_request() {
+    local action_str secret ts sig expected now
+    action_str="$1"
+    secret="$(synogetkeyvalue "$CONF_FILE" shared_secret 2>/dev/null)"
+    [ -z "$secret" ] && return 1
+
+    ts="${PARAM[ts]}"
+    sig="${PARAM[sig]}"
+    [[ "$ts" =~ ^[0-9]+$ ]] || return 1
+
+    now=$(date +%s)
+    (( now - ts > 60 || ts - now > 60 )) && return 1   # 60s replay window
+
+    expected=$(printf '%s' "${action_str}|${ts}" | openssl dgst -sha256 -hmac "$secret" | awk '{print $2}')
+    [[ "$sig" == "$expected" ]]
+}
+
 case "$REQUEST_METHOD" in
 POST)
     CONTENT_LENGTH=${CONTENT_LENGTH:-0}
@@ -83,6 +100,104 @@ setsettings)
     synosetkeyvalue "$CONF_FILE" default_target "${PARAM[default_target]}"
     synosetkeyvalue "$CONF_FILE" default_port "${PARAM[default_port]:-5201}"
     echo '{"success":true}'
+    ;;
+
+startserver)
+    port="${PARAM[port]:-5201}"
+    if [[ ! "$port" =~ ^[0-9]+$ ]] || (( port < 1 || port > 65535 )); then
+        json_response false "Invalid port" ""
+        exit 0
+    fi
+    if ! verify_signed_request "startserver:${port}"; then
+        json_response false "Unauthorized" ""
+        exit 0
+    fi
+
+    LOG="${VAR_DIR}/server-${port}.log"
+    nohup "${BIN_DIR}/syno_iperf3.sh" server-oneoff "$port" > "$LOG" 2>&1 < /dev/null &
+    disown
+
+    log "startserver: launched iperf3 -s -1 on port ${port} (pid $!, authenticated)"
+    echo "{\"success\":true,\"port\":${port}}"
+    ;;
+
+remotestart)
+    ip="${PARAM[ip]}"
+    dsm_port="${PARAM[dsm_port]:-5001}"
+    port="${PARAM[port]:-5201}"
+    if [[ ! "$ip" =~ ^[a-zA-Z0-9.-]+$ ]]; then
+        json_response false "Invalid ip" ""; exit 0
+    fi
+    secret="$(synogetkeyvalue "$CONF_FILE" shared_secret 2>/dev/null)"
+    if [[ -z "$secret" ]]; then
+        json_response false "No shared secret configured - set one in Settings on both NAS" ""
+        exit 0
+    fi
+    ts=$(date +%s)
+    sig=$(printf '%s' "startserver:${port}|${ts}" | openssl dgst -sha256 -hmac "$secret" | awk '{print $2}')
+    resp=$(curl -sk --max-time 3 \
+        "https://${ip}:${dsm_port}/webman/3rdparty/Synoiperf3/api.cgi?action=startserver&port=${port}&ts=${ts}&sig=${sig}" \
+        2>>"${VAR_DIR}/api.log")
+    if [ -z "$resp" ]; then
+        resp='{"success":false,"message":"No response from remote NAS"}'
+    fi
+    echo "$resp"
+    ;;
+
+ping)
+    pkgversion="$(synogetkeyvalue "${PKG_ROOT}"/INFO version)"
+    echo "{\"success\":true,\"pkg\":\"Synoiperf3\",\"version\":\"${pkgversion}\"}"
+    ;;
+
+discover)
+    NAS_LIST=$(python3 "${BIN_DIR}/syno_discover.py" --json --timeout 3 2>>"${VAR_DIR}/api.log")
+
+    TMPDIR=$(mktemp -d)
+    trap 'rm -rf "$TMPDIR"' EXIT
+
+    i=0
+    while IFS= read -r line; do
+        ip=$(echo "$line" | python3 -c "import json,sys; print(json.loads(sys.stdin.read()).get('ip',''))" 2>/dev/null)
+        hostname=$(echo "$line" | python3 -c "import json,sys; print(json.loads(sys.stdin.read()).get('hostname',''))" 2>/dev/null)
+        https_port=$(echo "$line" | python3 -c "import json,sys; print(json.loads(sys.stdin.read()).get('https_port',5001))" 2>/dev/null)
+        [ -z "$ip" ] && continue
+        i=$((i+1))
+        (
+            resp=$(curl -sk --max-time 1 \
+                "https://${ip}:${https_port}/webman/3rdparty/Synoiperf3/api.cgi?action=ping" 2>/dev/null)
+            if echo "$resp" | grep -q '"pkg":"Synoiperf3"'; then
+                echo "{\"ip\":\"${ip}\",\"hostname\":\"${hostname}\",\"dsm_port\":${https_port},\"port\":5201}" > "${TMPDIR}/${i}.json"
+            fi
+        ) &
+    done < <(echo "$NAS_LIST" | python3 -c "
+import json,sys
+for n in json.load(sys.stdin):
+    print(json.dumps(n))
+")
+    wait
+
+    RESULTS=$(cat "${TMPDIR}"/*.json 2>/dev/null | python3 -c "
+import json,sys
+items = []
+for line in sys.stdin:
+    line = line.strip()
+    if line:
+        items.append(json.loads(line))
+print(json.dumps(items))
+")
+    [ -z "$RESULTS" ] && RESULTS="[]"
+
+    echo "{\"success\":true,\"result\":${RESULTS}}"
+    ;;
+
+internetservers)
+    LIST_FILE="${BIN_DIR}/iperf3_internet_servers.json"
+    if [ -f "$LIST_FILE" ]; then
+        RESULT=$(cat "$LIST_FILE")
+    else
+        RESULT="[]"
+    fi
+    echo "{\"success\":true,\"result\":${RESULT}}"
     ;;
 
 *)
