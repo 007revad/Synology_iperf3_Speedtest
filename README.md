@@ -45,24 +45,24 @@ There are 2 ways to install the package:
 <br>
 
 <p align="center">Select another local Synology or internet iperf3 server</p>
-<p align="center"><kbd><img src="/images/window.png"></kbd></p>
+<p align="center"><img src="/images/window-2.png"></p>
 
 <br>
 
-<p align="center">Testing Synology to Synology speed</p>
-<p align="center"><kbd><img src="/images/window2.png"></kbd></p>
+<p align="center">Synology to Synology test results</p>
+<p align="center"><img src="/images/window2-2.png"></p>
 
 <br>
 
 <p align="center">Testing internet speed</p>
-<p align="center"><kbd><img src="/images/window3.png"></kbd></p>
+<p align="center"><img src="/images/window3-2.png"></p>
+
+<br>
+
+<p align="center">Settings</p>
+<p align="center"><img src="/images/settings-2.png"></p>
 
 <br>
 
 <p align="center">Copy the results</p>
 <p align="center"><kbd><img src="/images/save_results.png"></kbd></p>
-
-<br>
-
-<p align="center">Settings</p>
-<p align="center"><kbd><img src="/images/settings.png"></kbd></p>
