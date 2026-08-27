@@ -1,3 +1,6 @@
+v1.0.6
+- Bug fix for not installing python3 in DSM 6 if python3 not installed.
+
 v1.0.5
 - Added ability in settings to select which public iperf3 servers to show in the main window.
 - Now shows the provider for each public iperf3 server.
