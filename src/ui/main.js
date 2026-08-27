@@ -57,7 +57,9 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             minimizable: true,
             showHelp: false,
             width: 710,
+            minWidth: 710,
             height: 470,
+            minHeight: 470,
             html: this.buildHtml(),
             listeners: {
                 afterrender: {
@@ -75,12 +77,13 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             '  .iperf3-body { display:flex; flex-direction:column; height:100%; padding:8px; box-sizing:border-box; position:relative; }',
             '  .iperf3-form { flex:0 0 auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding-bottom:8px; }',
             '  .iperf3-form label { font-size:12px; color:#555; }',
-            '  .iperf3-form input[type=text], .iperf3-form input[type=number], .iperf3-form select {',
-            '    padding:4px 6px; border:1px solid #ccc; border-radius:4px; font-size:13px;',
+            '  .iperf3-input, .iperf3-form select {',
+            '    padding:2px 6px; border:1px solid #ccc; border-radius:4px; font-size:13px;',
+            '    box-sizing:border-box; height:24px;',
             '  }',
-            '  .iperf3-server-select { max-width:220px; }',
-            '  .iperf3-target { width:260px; }',
-            '  .iperf3-port { width:70px; }',
+            '  .iperf3-server-select { width:212px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }',
+            '  .iperf3-target { width:255px; }',
+            '  .iperf3-port { width:80px; }',
             '  .iperf3-streams { width:50px; }',
             '  .iperf3-toolbar { flex:0 0 auto; padding-bottom:8px; display:flex; align-items:center; gap:8px; }',
             '  .iperf3-toolbar button { padding:5px 18px; cursor:pointer; border-radius:4px; font-size:13px; font-weight:bold; border:1px solid #ccc; background-color:#fff; color:#555; }',
@@ -91,10 +94,14 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             '  .iperf3-status { flex:1 1 auto; font-size:13px; color:#555; }',
             '  .iperf3-spinner { display:none; vertical-align:middle; margin-right:5px; }',
             '  .iperf3-spinner.show { display:inline-block; }',
-            '  .iperf3-log { flex:1 1 auto; margin:0; overflow:auto; background:#161eb5; color:#ddd; padding:8px; font-family:\'Courier New\',monospace; font-size:12px; white-space:pre-wrap; border-radius:4px; }',
+            '  .iperf3-log { flex:1 1 auto; margin:0; overflow:auto; background:#161eb5; color:#ddd; padding:8px; font-family:\'Courier New\',monospace; font-size:12px; white-space:pre-wrap; border-radius:4px; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.4) transparent; }',
+            '  .iperf3-log::-webkit-scrollbar { width:10px; }',
+            '  .iperf3-log::-webkit-scrollbar-track { background:transparent; }',
+            '  .iperf3-log::-webkit-scrollbar-thumb { background-color:rgba(255,255,255,0.4); border-radius:5px; border:2px solid transparent; background-clip:content-box; }',
+            '  .iperf3-log::-webkit-scrollbar-thumb:hover { background-color:rgba(255,255,255,0.6); }',
             '  .iperf3-modal-backdrop { display:none; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.45); z-index:1000; align-items:center; justify-content:center; }',
             '  .iperf3-modal-backdrop.open { display:flex; }',
-            '  .iperf3-modal { position:relative; background:#fff; color:#222; width:320px; padding:20px; border-radius:6px; box-shadow:0 4px 24px rgba(0,0,0,0.35); }',
+            '  .iperf3-modal { position:relative; background:#fff; color:#222; width:320px; max-height:94%; overflow-y:auto; padding:20px 20px 5px 20px; border-radius:6px; box-shadow:0 4px 24px rgba(0,0,0,0.35); }',
             '  .iperf3-modal-close { position:absolute; top:8px; right:10px; border:none; background:none; font-size:16px; cursor:pointer; color:#666; line-height:1; padding:4px; }',
             '  .iperf3-modal-close:hover { color:#000; }',
             '  .iperf3-row { margin-bottom:14px; }',
@@ -106,21 +113,23 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             '  .iperf3-save { border:1px solid #1B8AED; background-color:#1B8AED; color:#fff; }',
             '  .iperf3-save:hover { border:1px solid #057FEB; background-color:#057FEB; }',
             '  .iperf3-settings-status { font-size:12px; color:#555; min-height:16px; }',
+            '  .iperf3-server-checklist { max-height:110px; overflow-y:auto; border:1px solid #ccc; border-radius:4px; padding:6px; margin-top:4px; }',
+            '  .iperf3-server-checklist label { display:block; font-weight:normal; font-size:12px; margin-bottom:4px; }',
             '</style>',
             '<div class="iperf3-body">',
             '  <div class="iperf3-form">',
             '    <label>Server:',
             '      <select class="iperf3-server-select"><option value="-1">Custom / manual entry</option></select>',
             '    </label>',
-            '    <label>Target: <input type="text" class="iperf3-target" placeholder="192.168.1.x"></label>',
-            '    <label>Port: <input type="number" class="iperf3-port" value="5201"></label>',
+            '    <label>Target: <input type="text" class="iperf3-input iperf3-target" placeholder="192.168.1.x"></label>',
+            '    <label>Port: <input type="number" class="iperf3-input iperf3-port" value="5201"></label>',
             '    <label>Protocol:',
             '      <select class="iperf3-protocol"><option value="tcp">TCP</option><option value="udp">UDP</option></select>',
             '    </label>',
             '    <label>Mode:',
             '      <select class="iperf3-mode"><option value="upload">Upload</option><option value="download">Download</option></select>',
             '    </label>',
-            '    <label>Streams: <input type="number" class="iperf3-streams" value="1" min="1" max="128"></label>',
+            '    <label>Streams: <input type="number" class="iperf3-input iperf3-streams" value="1" min="1" max="128"></label>',
             '  </div>',
             '  <div class="iperf3-toolbar">',
             '    <button type="button" class="iperf3-run">Run Speed Test</button>',
@@ -137,15 +146,19 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             '      <button type="button" class="iperf3-modal-close" aria-label="Close">\u00d7</button>',
             '      <div class="iperf3-row">',
             '        <label>Default target IP:</label>',
-            '        <input type="text" class="iperf3-default-target" style="width:100%">',
+            '        <input type="text" class="iperf3-input iperf3-default-target" style="width:100%">',
             '      </div>',
             '      <div class="iperf3-row">',
             '        <label>Default port:</label>',
-            '        <input type="number" class="iperf3-default-port" style="width:80px">',
+            '        <input type="number" class="iperf3-input iperf3-default-port" style="width:80px">',
             '      </div>',
             '      <div class="iperf3-row">',
             '        <label>Shared secret (must match on every Synology NAS that has this package installed):</label>',
-            '        <input type="text" class="iperf3-shared-secret" style="width:100%" placeholder="e.g. a random string">',
+            '        <input type="text" class="iperf3-input iperf3-shared-secret" style="width:100%" placeholder="e.g. a random string">',
+            '      </div>',
+            '      <div class="iperf3-row">',
+            '        <label>Internet servers shown in the main window:</label>',
+            '        <div class="iperf3-server-checklist"></div>',
             '      </div>',
             '      <div class="iperf3-row iperf3-settings-status"></div>',
             '      <div class="iperf3-row iperf3-settings-buttons">',
@@ -176,6 +189,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         this.defaultTargetEl = el.querySelector(".iperf3-default-target");
         this.defaultPortEl = el.querySelector(".iperf3-default-port");
         this.sharedSecretEl = el.querySelector(".iperf3-shared-secret");
+        this.serverChecklistEl = el.querySelector(".iperf3-server-checklist");
         this.settingsStatusEl = el.querySelector(".iperf3-settings-status");
 
         this.serverList = [];
@@ -274,38 +288,55 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         }).createDelegate(this));
     },
 
-    // Fetches both local (discover) and internet server lists, merges
-    // them into one indexable array, and builds the dropdown with
-    // optgroups. this.serverList holds the full objects so the change
-    // handler can look one up by index rather than re-parsing the option.
+    // Builds the dropdown's HTML from the given local+internet arrays
+    // and stores the combined list for onServerSelect's index lookups.
+    // Shared by loadServerList (full, local+internet) and
+    // refreshInternetServers (internet only, reusing cached local
+    // results) so there's one rendering path, not two to keep in sync.
+    renderServerList: function(local, internet) {
+        local.forEach(function(s) { s.type = "local"; });
+        this.serverList = local.concat(internet);
+
+        var self = this;
+        var html = '<option value="-1">Custom / manual entry</option>';
+        if (local.length) {
+            html += '<optgroup label="Local NAS running Syno iperf3\u00A0\u00A0\u00A0">';
+            local.forEach(function(s) {
+                html += '<option value="' + self.serverList.indexOf(s) + '">' +
+                    (s.hostname || s.ip) + '</option>';
+            });
+            html += '</optgroup>';
+        }
+        if (internet.length) {
+            html += '<optgroup label="Internet">';
+            internet.forEach(function(s) {
+                html += '<option value="' + self.serverList.indexOf(s) + '">' +
+                    s.name + '</option>';
+            });
+            html += '</optgroup>';
+        }
+        this.serverSelectEl.innerHTML = html;
+    },
+
+    // Full load: runs discover (LAN broadcast, ~3s) plus internetservers.
+    // Only called once, when the window first opens - re-running this
+    // later (e.g. after a Settings save) would start a second,
+    // overlapping discover call while the first might still be in
+    // flight, which can return an empty/partial local list depending on
+    // timing, and whichever call finishes last clobbers the other's
+    // results. Nothing in Settings changes which NAS exist on the LAN,
+    // so there's never a need to re-discover after a save - see
+    // refreshInternetServers for that case instead.
     loadServerList: function() {
         var self = this;
+        this.cachedLocalServers = [];
         this.setStatus("Finding local servers\u2026", true);
         SYNO.SDS.Synoiperf3.apiCall("discover", {}, function(localResp) {
             SYNO.SDS.Synoiperf3.apiCall("internetservers", {}, function(netResp) {
                 var local = (localResp && localResp.success && localResp.result) ? localResp.result : [];
                 var internet = (netResp && netResp.success && netResp.result) ? netResp.result : [];
-                local.forEach(function(s) { s.type = "local"; });
-                self.serverList = local.concat(internet);
-
-                var html = '<option value="-1">Custom / manual entry</option>';
-                if (local.length) {
-                    html += '<optgroup label="Local NAS running Syno iperf3\u00A0\u00A0\u00A0">';
-                    local.forEach(function(s) {
-                        html += '<option value="' + self.serverList.indexOf(s) + '">' +
-                            (s.hostname || s.ip) + '</option>';
-                    });
-                    html += '</optgroup>';
-                }
-                if (internet.length) {
-                    html += '<optgroup label="Internet">';
-                    internet.forEach(function(s) {
-                        html += '<option value="' + self.serverList.indexOf(s) + '">' +
-                            s.name + '</option>';
-                    });
-                    html += '</optgroup>';
-                }
-                self.serverSelectEl.innerHTML = html;
+                self.cachedLocalServers = local;
+                self.renderServerList(local, internet);
 
                 // Only clear the message if nothing else has taken over
                 // the status text in the meantime (e.g. a test the user
@@ -314,6 +345,20 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
                     self.setStatus("");
                 }
             });
+        });
+    },
+
+    // Lightweight refresh after a Settings save: re-fetches only the
+    // (possibly just-changed) internet server list, and re-renders
+    // using whichever local servers the initial loadServerList already
+    // found - no new discover call, so no risk of it racing/clobbering
+    // an in-flight one.
+    refreshInternetServers: function() {
+        var self = this;
+        var local = this.cachedLocalServers || [];
+        SYNO.SDS.Synoiperf3.apiCall("internetservers", {}, function(netResp) {
+            var internet = (netResp && netResp.success && netResp.result) ? netResp.result : [];
+            self.renderServerList(local, internet);
         });
     },
 
@@ -432,8 +477,41 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
         this.setRunning(false);
     },
 
+    // Fetches the full master server list plus the currently-active
+    // subset, and builds a checkbox per master entry - checked if that
+    // entry (matched by ip+port, not name, since names can be renamed
+    // independently of identity) is currently in the active list.
+    // this.allInternetServers is kept for onSaveSettings to read back
+    // which checkbox indexes correspond to which master-list positions.
+    loadServerChecklist: function() {
+        var self = this;
+        SYNO.SDS.Synoiperf3.apiCall("allinternetservers", {}, function(allResp) {
+            SYNO.SDS.Synoiperf3.apiCall("internetservers", {}, function(activeResp) {
+                var all = (allResp && allResp.success && allResp.result) ? allResp.result : [];
+                var active = (activeResp && activeResp.success && activeResp.result) ? activeResp.result : [];
+                self.allInternetServers = all;
+
+                var activeKeys = {};
+                active.forEach(function(s) {
+                    activeKeys[s.ip + ":" + s.port] = true;
+                });
+
+                var html = "";
+                all.forEach(function(s, idx) {
+                    var checked = activeKeys[s.ip + ":" + s.port] ? " checked" : "";
+                    html += '<label><input type="checkbox" class="iperf3-server-check" ' +
+                        'data-idx="' + idx + '"' + checked + '> ' + s.name + '</label>';
+                });
+                if (self.serverChecklistEl) {
+                    self.serverChecklistEl.innerHTML = html || "<em>No servers available</em>";
+                }
+            });
+        });
+    },
+
     openSettings: function() {
         this.setSettingsStatus("");
+        this.loadServerChecklist();
         SYNO.SDS.Synoiperf3.apiCall("getsettings", {}, (function(resp) {
             if (resp && resp.success) {
                 this.defaultTargetEl.value = resp.default_target || "";
@@ -502,11 +580,22 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
             return;
         }
 
+        var checks = this.serverChecklistEl ?
+            this.serverChecklistEl.querySelectorAll(".iperf3-server-check:checked") : [];
+        var indexes = [];
+        Ext.each(checks, function(c) { indexes.push(c.getAttribute("data-idx")); });
+
+        // One request for everything - nothing is written server-side
+        // unless all fields (target, port, secret, server selection)
+        // pass validation together. Two separate requests would let
+        // one succeed and commit to disk while the other failed,
+        // leaving a partial save the user never asked for.
         this.setSettingsStatus("Saving\u2026");
-        SYNO.SDS.Synoiperf3.apiCall("setsettings", {
+        SYNO.SDS.Synoiperf3.apiCall("savesettings", {
             default_target: typedTarget,
             default_port: typedPort,
-            shared_secret: typedSecret
+            shared_secret: typedSecret,
+            selected: indexes.join(",")
         }, (function(resp) {
             if (resp && resp.success) {
                 var mismatch = [];
@@ -529,6 +618,7 @@ Ext.define("SYNO.SDS.Synoiperf3.MainWindow", {
                     this.setSettingsStatus("");
                     this.closeSettings();
                     this.loadDefaultsIntoForm();
+                    this.refreshInternetServers();
                 }
             } else {
                 this.setSettingsStatus((resp && resp.message) || "Failed to save settings");

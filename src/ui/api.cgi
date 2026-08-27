@@ -53,6 +53,22 @@ verify_signed_request() {
     [[ "$sig" == "$expected" ]]
 }
 
+validate_target() {
+    local val="$1"
+    [ -z "$val" ] && return 0
+    python3 -c "
+import sys, re
+val = sys.argv[1]
+if re.match(r'^\d+(\.\d+)*\$', val):
+    parts = val.split('.')
+    ok = len(parts) == 4 and all(len(p) <= 3 and int(p) <= 255 for p in parts)
+    sys.exit(0 if ok else 1)
+label = r'(?!-)[A-Za-z0-9-]{1,63}(?<!-)'
+pattern = r'^' + label + r'(\.' + label + r')*\$'
+sys.exit(0 if re.match(pattern, val) and len(val) <= 253 else 1)
+" "$val"
+}
+
 case "$REQUEST_METHOD" in
 POST)
     CONTENT_LENGTH=${CONTENT_LENGTH:-0}
@@ -101,12 +117,19 @@ getsettings)
     echo "{\"success\":true,\"default_target\":${TARGET_JSON},\"default_port\":${PORT},\"shared_secret\":${SECRET_JSON}}"
     ;;
 
-setsettings)
+savesettings)
     NEW_TARGET="${PARAM[default_target]}"
     NEW_PORT="${PARAM[default_port]:-5201}"
     NEW_SECRET="${PARAM[shared_secret]}"
+    SELECTED="${PARAM[selected]}"
 
-    if [[ -n "$NEW_TARGET" && ! "$NEW_TARGET" =~ ^[a-zA-Z0-9.-]+$ ]]; then
+    # Validate everything before writing anything - a bad value in any
+    # one field must not leave the others already committed to disk.
+    if [[ -n "$NEW_SECRET" && ( "$NEW_SECRET" == *'"'* || "$NEW_SECRET" == *'\'* ) ]]; then
+        json_response false "Shared secret cannot contain \\ or \"" ""
+        exit 0
+    fi
+    if ! validate_target "$NEW_TARGET"; then
         json_response false "Invalid default target" ""
         exit 0
     fi
@@ -114,20 +137,35 @@ setsettings)
         json_response false "Invalid default port" ""
         exit 0
     fi
-    if [[ "$NEW_SECRET" == *'"'* || "$NEW_SECRET" == *'\'* ]]; then
-        json_response false "Shared secret cannot contain \\ or \"" ""
+
+    ALL_LIST_FILE="${BIN_DIR}/all_iperf3_internet_servers.json"
+    if [ ! -f "$ALL_LIST_FILE" ]; then
+        json_response false "Master server list missing" ""
         exit 0
     fi
 
+    NEW_INTERNET_LIST=$(SELECTED="$SELECTED" python3 -c "
+import json, os
+with open('${ALL_LIST_FILE}') as f:
+    all_servers = json.load(f)
+indexes = []
+for part in os.environ.get('SELECTED', '').split(','):
+    part = part.strip()
+    if part.isdigit():
+        i = int(part)
+        if 0 <= i < len(all_servers):
+            indexes.append(i)
+print(json.dumps([all_servers[i] for i in indexes]))
+")
+
     NEW_SECRET="$(printf '%s' "$NEW_SECRET" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
 
+    # All validated - now write, together.
     synosetkeyvalue "$CONF_FILE" default_target "$NEW_TARGET"
     synosetkeyvalue "$CONF_FILE" default_port "$NEW_PORT"
     synosetkeyvalue "$CONF_FILE" shared_secret "$NEW_SECRET"
+    echo "$NEW_INTERNET_LIST" > "${BIN_DIR}/iperf3_internet_servers.json"
 
-    # Read back what was actually stored - lets the UI confirm the save
-    # matched what the user typed, immediately, rather than them only
-    # noticing a difference later when reopening Settings.
     SAVED_TARGET=$(synogetkeyvalue "$CONF_FILE" default_target 2>/dev/null)
     SAVED_SECRET=$(synogetkeyvalue "$CONF_FILE" shared_secret 2>/dev/null)
     SAVED_TARGET_JSON=$(printf '%s' "$SAVED_TARGET" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
@@ -226,6 +264,16 @@ print(json.dumps(items))
 
 internetservers)
     LIST_FILE="${BIN_DIR}/iperf3_internet_servers.json"
+    if [ -f "$LIST_FILE" ]; then
+        RESULT=$(cat "$LIST_FILE")
+    else
+        RESULT="[]"
+    fi
+    echo "{\"success\":true,\"result\":${RESULT}}"
+    ;;
+
+allinternetservers)
+    LIST_FILE="${BIN_DIR}/all_iperf3_internet_servers.json"
     if [ -f "$LIST_FILE" ]; then
         RESULT=$(cat "$LIST_FILE")
     else
