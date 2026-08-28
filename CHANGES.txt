@@ -1,3 +1,7 @@
+v1.0.7
+- Added 186 public iperf3 servers to choose from in settings.
+- Bug fix for public iperf3 servers list being empty in settings.
+
 v1.0.6
 - Bug fix for not installing python3 in DSM 6 if python3 not installed.
 

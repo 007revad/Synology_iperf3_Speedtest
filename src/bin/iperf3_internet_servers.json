@@ -1,12 +1,12 @@
 [
-  { "name": "Frankfurt, DE, DATAPACKET", "ip": "185.102.219.93", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "New York, US, LeaseWeb", "ip": "speedtest.nyc1.us.leaseweb.net", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "Dallas, US, Clouvider", "ip": "dal.speedtest.clouvider.net", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "Kansas, US, NOCIX", "ip": "speedtest.nocix.net", "port": 5201, "protocols": ["tcp"], "type": "internet" },
-  { "name": "London, GB, DATAPACKET", "ip": "185.59.221.51", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "Sydney, AU, LeaseWeb", "ip": "speedtest.syd12.au.leaseweb.net", "port": 5201, "protocols": ["tcp"], "type": "internet" },
-  { "name": "Singapore, SG, DATAPACKET", "ip": "89.187.162.1", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "São Paulo, BR, DATAPACKET", "ip": "138.199.4.1", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "Tel Aviv, IL, DATAPACKET", "ip": "169.150.202.193", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" },
-  { "name": "Algiers, DZ, DATAPACKET", "ip": "41.110.39.130", "port": 5201, "protocols": ["tcp","udp"], "type": "internet" }
+  { "name": "Frankfurt, DE, DATAPACKET", "ip": "185.102.219.93", "port": 5201, "protocols": ["tcp", "udp"], "type": "internet", "speed": "2x10", "continent": "Europe"},
+  { "name": "London, GB, DATAPACKET", "ip": "185.59.221.51", "port": 5201, "protocols": ["tcp", "udp"], "type": "internet", "speed": "2x10", "continent": "Europe"},
+  { "name": "Dallas, US, Clouvider", "ip": "dal.speedtest.clouvider.net", "port": 5209, "protocols": ["tcp", "udp"], "type": "internet", "speed": "10", "continent": "North America"},
+  { "name": "Kansas City, US, NOCIX", "ip": "speedtest.nocix.net", "port": 5205, "protocols": ["tcp"], "type": "internet", "speed": "200", "continent": "North America"},
+  { "name": "New York City, US, LeaseWeb", "ip": "speedtest.nyc1.us.leaseweb.net", "port": 5210, "protocols": ["tcp", "udp"], "type": "internet", "speed": "10", "continent": "North America"},
+  { "name": "Sydney, AU, LeaseWeb", "ip": "speedtest.syd12.au.leaseweb.net", "port": 5210, "protocols": ["tcp"], "type": "internet", "speed": "10", "continent": "Oceania"},
+  { "name": "Tel Aviv, IL, DATAPACKET", "ip": "169.150.202.193", "port": 5201, "protocols": ["tcp", "udp"], "type": "internet", "speed": "2x10", "continent": "Asia"},
+  { "name": "Singapore, SG, DATAPACKET", "ip": "89.187.162.1", "port": 5201, "protocols": ["tcp", "udp"], "type": "internet", "speed": "2x10", "continent": "Asia"}, 
+  { "name": "S\u00e3o Paulo, BR, DATAPACKET", "ip": "138.199.4.1", "port": 5201, "protocols": ["tcp", "udp"], "type": "internet", "speed": "2x10", "continent": "Latin America"}, 
+  { "name": "Algiers, DZ, DATAPACKET", "ip": "41.110.39.130", "port": 5201, "protocols": ["tcp", "udp"], "type": "internet", "speed": "10", "continent": "Africa"}
 ]

@@ -1,0 +1,2135 @@
+[
+  {
+    "name": "Vienna, AT, DATAPACKET",
+    "ip": "185.180.12.40",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Vienna, AT, Alwyzon",
+    "ip": "iperf3-vie-at.alwyzon.net",
+    "port": 5210,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x100",
+    "continent": "Europe"
+  },
+  {
+    "name": "Brussels, BE, DATAPACKET",
+    "ip": "207.211.214.65",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Liège, BE, VOO",
+    "ip": "185.3.160.57",
+    "port": 5240,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "Sofia, BG, DATAPACKET",
+    "ip": "37.19.203.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Schaffhausen, CH, Sasag",
+    "ip": "speedtest.shinternet.ch",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Winterthur, CH, Init7",
+    "ip": "speedtest.init7.net",
+    "port": 5204,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "20",
+    "continent": "Europe"
+  },
+  {
+    "name": "Zürich, CH, iWay",
+    "ip": "speedtest.iway.ch",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Zürich, CH, DATAPACKET",
+    "ip": "89.187.165.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Zürich, CH, CSCS",
+    "ip": "t5.cscs.ch",
+    "port": 5203,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "Europe"
+  },
+  {
+    "name": "Prague, CZ, DATAPACKET",
+    "ip": "185.152.65.113",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Berlin, DE, WOBCOM",
+    "ip": "a209.speedtest.wobcom.de",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Berlin, DE, WOBCOM",
+    "ip": "a110.speedtest.wobcom.de",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Düsseldorf, DE, WOBCOM",
+    "ip": "a208.speedtest.wobcom.de",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, ESEVEN",
+    "ip": "178.215.228.109",
+    "port": 9240,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, Clouvider",
+    "ip": "fra.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, IP Projects",
+    "ip": "speedtest.ip-projects.de",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, LeaseWeb",
+    "ip": "speedtest.fra1.de.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, HOSTKEY",
+    "ip": "spd-desrv.hostkey.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, WOBCOM",
+    "ip": "a210.speedtest.wobcom.de",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, WOBCOM",
+    "ip": "a205.speedtest.wobcom.de",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, DATAPACKET",
+    "ip": "185.102.219.93",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, FortiSASE",
+    "ip": "96.45.39.38",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Frankfurt, DE, level66.network",
+    "ip": "speedtest.level66.services",
+    "port": 5205,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Norderstedt, DE, wilhelm.tel",
+    "ip": "speedtest.wtnet.de",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "40",
+    "continent": "Europe"
+  },
+  {
+    "name": "Wolfsburg, DE, WOBCOM",
+    "ip": "speedtest.wobcom.de",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Wolfsburg, DE, WOBCOM",
+    "ip": "a400.speedtest.wobcom.de",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Copenhagen, DK, Hiper",
+    "ip": "speedtest.hiper.dk",
+    "port": 5205,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "Copenhagen, DK, Fiberby",
+    "ip": "speed1.fiberby.dk",
+    "port": 9240,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Copenhagen, DK, Fiberby",
+    "ip": "speed2.fiberby.dk",
+    "port": 9240,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Tallinn, EE, CITIC",
+    "ip": "bwtest.linxtelecom.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Europe"
+  },
+  {
+    "name": "Madrid, ES, DATAPACKET",
+    "ip": "185.93.3.50",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Madrid, ES, FortiSASE",
+    "ip": "148.230.45.213",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Helsinki, FI, HOSTKEY",
+    "ip": "spd-fisrv.hostkey.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Croissy-Beaubourg, FR, MilkyWan",
+    "ip": "speedtest.milkywan.fr",
+    "port": 9240,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "40",
+    "continent": "Europe"
+  },
+  {
+    "name": "Marseille, FR, DATAPACKET",
+    "ip": "138.199.14.66",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Paris, FR, DATAPACKET",
+    "ip": "185.93.2.193",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Paris, FR, moji",
+    "ip": "iperf3.moji.fr",
+    "port": 5240,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "Europe"
+  },
+  {
+    "name": "Paris, FR, Scaleway",
+    "ip": "ping-90ms.online.net",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "Europe"
+  },
+  {
+    "name": "Paris, FR, Scaleway",
+    "ip": "iperf.online.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "Europe"
+  },
+  {
+    "name": "Paris, FR, FortiSASE",
+    "ip": "96.45.42.156",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Valbonne, FR, FortiSASE",
+    "ip": "96.45.41.167",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Vitry-sur-Seine, FR, Scaleway",
+    "ip": "ping.online.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "Europe"
+  },
+  {
+    "name": "London, GB, UK Servers",
+    "ip": "iperf.as42831.net",
+    "port": 5400,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "London, GB, LeaseWeb",
+    "ip": "speedtest.lon1.uk.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "London, GB, LeaseWeb",
+    "ip": "speedtest.lon12.uk.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "London, GB, Cloudvider",
+    "ip": "lon.speedtest.clouvider.net",
+    "port": 5208,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "London, GB, DATAPACKET",
+    "ip": "185.59.221.51",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "London, GB, Lightning Fibre",
+    "ip": "speedtest2.lightningfibre.net.uk",
+    "port": 4007,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "London, GB, FortiSASE",
+    "ip": "96.45.40.45",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Maidenhead, GB, RapidSwitch",
+    "ip": "speedtest.rapidswitch.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Europe"
+  },
+  {
+    "name": "Manchester, GB, Clouvider",
+    "ip": "man.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Athens, GR, DATAPACKET",
+    "ip": "169.150.252.2",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Zagreb, HR, DATAPACKET",
+    "ip": "169.150.242.129",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Dublin, IE, DATAPACKET",
+    "ip": "87.249.137.8",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Reykjavik, IS, HOSTKEY",
+    "ip": "spd-icsrv.hostkey.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Arezzo, IT, Aruba.it",
+    "ip": "it1.speedtest.aruba.it",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "Milan, IT, DATAPACKET",
+    "ip": "84.17.59.129",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Ponte San Pietro, IT, Aruba.it",
+    "ip": "217.61.40.96",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "Rome, IT, Dimensione",
+    "ip": "speed-cb.dimensione.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "London, MU, Mauritius Telecom",
+    "ip": "speedtestlondon.telecom.mu",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, LeaseWeb",
+    "ip": "speedtest.ams1.nl.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, LeaseWeb",
+    "ip": "speedtest.ams2.nl.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, Clouvider",
+    "ip": "ams.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, Scaleway",
+    "ip": "ping-ams1.online.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, WOBCOM",
+    "ip": "a204.speedtest.wobcom.de",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x25",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, DATAPACKET",
+    "ip": "185.102.218.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, Eranium",
+    "ip": "iperf-ams-nl.eranium.net",
+    "port": 5210,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, NetOne",
+    "ip": "speedtest.netone.nl",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Amsterdam, NL, Gigahost",
+    "ip": "lg.ams-nl.gigahost.no",
+    "port": 9240,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "Europe"
+  },
+  {
+    "name": "Dronten, NL, Mirhosting",
+    "ip": "speedtest.nl1.mirhosting.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "20",
+    "continent": "Europe"
+  },
+  {
+    "name": "Dronten, NL, vps1",
+    "ip": "nl.speed.vps1.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "Lelystad, NL, SURFnet",
+    "ip": "iperf1.surfwireless.nl",
+    "port": 5220,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Europe"
+  },
+  {
+    "name": "Naaldwijk, NL, Worldstream",
+    "ip": "iperf.worldstream.nl",
+    "port": 5205,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Sandefjord, NO, Gigahost",
+    "ip": "lg.gigahost.no",
+    "port": 9240,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "Europe"
+  },
+  {
+    "name": "Debica, PL, Multinet24",
+    "ip": "speedsrv.multinet24.pl",
+    "port": 5310,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Europe"
+  },
+  {
+    "name": "Warsaw, PL, DATAPACKET",
+    "ip": "185.246.208.67",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Lisbon, PT, DATAPACKET",
+    "ip": "109.61.94.65",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Bucharest, RO, DATAPACKET",
+    "ip": "185.102.217.170",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Belgrade, RS, SOX",
+    "ip": "speedtest1.sox.rs",
+    "port": 9240,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Alvsjo, SE, Hostup",
+    "ip": "iperf.fegis.nu",
+    "port": 5207,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Kista, SE, Kamel Networks",
+    "ip": "speedtest.kamel.network",
+    "port": 5205,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Europe"
+  },
+  {
+    "name": "Stockholm, SE, DATAPACKET",
+    "ip": "185.76.9.135",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Bratislava, SK, DATAPACKET",
+    "ip": "156.146.40.65",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Kyiv, UA, DATAPACKET",
+    "ip": "37.19.218.65",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Europe"
+  },
+  {
+    "name": "Kyiv, UA, Cosmonova",
+    "ip": "speed.cosmonova.net",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "40",
+    "continent": "Europe"
+  },
+  {
+    "name": "Ashburn, US, Clouvider",
+    "ip": "ash.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Ashburn, US, DATAPACKET",
+    "ip": "37.19.206.20",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Ashburn, US, FortiSASE",
+    "ip": "66.35.22.79",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Atlanta, US, Clouvider",
+    "ip": "atl.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Atlanta, US, DATAPACKET",
+    "ip": "185.152.66.67",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Boston, US, DATAPACKET",
+    "ip": "109.61.86.65",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Chicago, US, LeaseWeb",
+    "ip": "speedtest.chi11.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Chicago, US, DATAPACKET",
+    "ip": "185.93.1.65",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Chicago, US, Clouvider",
+    "ip": "chi.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Dallas, US, LeaseWeb",
+    "ip": "speedtest.dal13.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Dallas, US, Clouvider",
+    "ip": "dal.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Dallas, US, DATAPACKET",
+    "ip": "89.187.164.1",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Dallas, US, InterServer.net",
+    "ip": "dfw.speedtest.is.cc",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "100",
+    "continent": "North America"
+  },
+  {
+    "name": "Dallas, US, FortiSASE",
+    "ip": "66.35.27.207",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Houston, US, DATAPACKET",
+    "ip": "37.19.216.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Kansas City, US, NOCIX",
+    "ip": "speedtest.nocix.net",
+    "port": 5205,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "200",
+    "continent": "North America"
+  },
+  {
+    "name": "Los Angeles, US, Clouvider",
+    "ip": "la.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Los Angeles, US, LeaseWeb",
+    "ip": "speedtest.lax12.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Los Angeles, US, DATAPACKET",
+    "ip": "185.152.67.2",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Miami, US, LeaseWeb",
+    "ip": "speedtest.mia11.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Miami, US, DATAPACKET",
+    "ip": "195.181.162.195",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Miami, US, FortiSASE",
+    "ip": "23.249.54.234",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "New York, US, HOSTKEY",
+    "ip": "spd-uswb.hostkey.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "New York, US, DATAPACKET",
+    "ip": "185.59.223.8",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "New York City, US, LeaseWeb",
+    "ip": "speedtest.nyc1.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Phoenix, US, LeaseWeb",
+    "ip": "speedtest.phx1.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Phoenix, US, Clouvider",
+    "ip": "phx.speedtest.clouvider.net",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Plano, US, FortiSASE",
+    "ip": "209.40.123.215",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Salt Lake, US, XMISSION",
+    "ip": "speedtest.xmission.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "North America"
+  },
+  {
+    "name": "San Francisco, US, LeaseWeb",
+    "ip": "speedtest.sfo12.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "San Jose, US, FortiSASE",
+    "ip": "66.35.20.123",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "San Jose, US, FortiSASE",
+    "ip": "148.230.59.38",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Seattle, US, LeaseWeb",
+    "ip": "speedtest.sea11.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Seattle, US, DATAPACKET",
+    "ip": "84.17.41.11",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Washington, US, LeaseWeb",
+    "ip": "speedtest.wdc2.us.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Montreal, CA, LeaseWeb",
+    "ip": "speedtest.mtl2.ca.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Montreal, CA, TELUS",
+    "ip": "speedtest.goco.ca",
+    "port": 9240,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Ottawa, CA, FortiSASE",
+    "ip": "173.243.131.29",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Toronto, CA, DATAPACKET",
+    "ip": "138.199.57.129",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "North America"
+  },
+  {
+    "name": "Toronto, CA, FortiSASE",
+    "ip": "96.45.43.6",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Vancouver, CA, FortiSASE",
+    "ip": "66.35.30.9",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "North America"
+  },
+  {
+    "name": "Victoria, CA, couch.ca",
+    "ip": "speed.couch.ca",
+    "port": 15210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "North America"
+  },
+  {
+    "name": "Woodstock, CA, Xplore",
+    "ip": "yyc-speedtest.xplore.ca",
+    "port": 8099,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "North America"
+  },
+  {
+    "name": "Sydney, AU, LeaseWeb",
+    "ip": "speedtest.syd12.au.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Sydney, AU, DATAPACKET",
+    "ip": "143.244.63.144",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Sydney, AU, OVH",
+    "ip": "syd.proof.ovh.net",
+    "port": 5210,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Sydney, AU, FortiSASE",
+    "ip": "96.45.44.87",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Noumea, NC, Lagoon",
+    "ip": "speedtest.lagoon.nc",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Auckland, NZ, 2Degrees",
+    "ip": "akl.linetest.nz",
+    "port": 5309,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Christchurch, NZ, 2Degrees",
+    "ip": "chch.linetest.nz",
+    "port": 5309,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Port Moresby, PG, DATAPACKET",
+    "ip": "154.81.51.4",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Port Moresby, PG, DATAPACKET",
+    "ip": "103.146.200.98",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Oceania"
+  },
+  {
+    "name": "Dubai, AE, FortiSASE",
+    "ip": "23.249.55.42",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Dubai, AE, FortiSASE",
+    "ip": "69.48.238.200",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Hong Kong, HK, LeaseWeb",
+    "ip": "speedtest.hkg12.hk.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Hong Kong, HK, DATAPACKET",
+    "ip": "84.17.57.129",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Hong Kong, HK, FortiSASE",
+    "ip": "23.249.58.14",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Curug, ID, Arthatel",
+    "ip": "iperf.scbd.net.id",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Asia"
+  },
+  {
+    "name": "Kediri, ID, MyRepublic",
+    "ip": "speedtest.tangerang2.myrepublic.net.id",
+    "port": 9240,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Asia"
+  },
+  {
+    "name": "Jerusalem, IL, Netfiber",
+    "ip": "speed.netfiber.net.il",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Asia"
+  },
+  {
+    "name": "Jerusalem, IL, Rimon",
+    "ip": "speed.rimon.net.il",
+    "port": 5201,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Asia"
+  },
+  {
+    "name": "Tel Aviv, IL, DATAPACKET",
+    "ip": "169.150.202.193",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Bangalore, IN, FortiSASE",
+    "ip": "23.249.61.122",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Bengaluru, IN, ACT Fibernet",
+    "ip": "49.205.75.2",
+    "port": 5020,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Asia"
+  },
+  {
+    "name": "Pune, IN, FortiSASE",
+    "ip": "69.48.236.198",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Komagome, JP, FortiSASE",
+    "ip": "23.249.60.154",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Tokyo, JP, LeaseWeb",
+    "ip": "speedtest.tyo11.jp.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Tokyo, JP, DATAPACKET",
+    "ip": "89.187.160.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Tokyo, JP, FortiSASE",
+    "ip": "66.35.31.81",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Ulaanbaatar, MN, Mobicom",
+    "ip": "coverage1.mobicom.mn",
+    "port": 5202,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Asia"
+  },
+  {
+    "name": "Singapore, SG, LeaseWeb",
+    "ip": "speedtest.sin1.sg.leaseweb.net",
+    "port": 5210,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Singapore, SG, DATAPACKET",
+    "ip": "89.187.162.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Singapore, SG, OVH",
+    "ip": "sgp.proof.ovh.net",
+    "port": 5210,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Asia"
+  },
+  {
+    "name": "Singapore, SG, FortiSASE",
+    "ip": "96.45.38.22",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Bursa, TR, PENDC",
+    "ip": "iperf.pendc.com",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Istanbul, TR, DATAPACKET",
+    "ip": "156.146.52.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Istanbul, TR, FortiSASE",
+    "ip": "69.48.237.66",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Tashkent, UZ, UZ Telecom",
+    "ip": "speedtest.uztelecom.uz",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Asia"
+  },
+  {
+    "name": "Sao Paulo, BR, FortiSASE",
+    "ip": "148.230.60.200",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Latin America"
+  },
+  {
+    "name": "São Paulo, BR, DATAPACKET",
+    "ip": "138.199.4.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Latin America"
+  },
+  {
+    "name": "Santiago, CL, DATAPACKET",
+    "ip": "79.127.209.1",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Latin America"
+  },
+  {
+    "name": "San Jose, CR, DATAPACKET",
+    "ip": "156.146.53.53",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Latin America"
+  },
+  {
+    "name": "Santa Ana, EC, MásNet",
+    "ip": "speedtest.masnet.ec",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Latin America"
+  },
+  {
+    "name": "Portmore, JM, Flow",
+    "ip": "speedtest1.flowjamaica.com",
+    "port": 5520,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Latin America"
+  },
+  {
+    "name": "Querétaro, MX, DATAPACKET",
+    "ip": "121.127.43.65",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Latin America"
+  },
+  {
+    "name": "Colón, PA, CW Panama",
+    "ip": "speedtest1.cwpanama.net",
+    "port": 5509,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Latin America"
+  },
+  {
+    "name": "Panamá, PA, CW Panama",
+    "ip": "speedtest6.cwpanama.net",
+    "port": 5509,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "1",
+    "continent": "Latin America"
+  },
+  {
+    "name": "Luanda, AO, Paratus",
+    "ip": "160.242.19.254",
+    "port": 9240,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Africa"
+  },
+  {
+    "name": "Algiers, DZ, DATAPACKET",
+    "ip": "41.110.39.130",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Africa"
+  },
+  {
+    "name": "Cairo, EG, DATAPACKET",
+    "ip": "213.158.175.240",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Africa"
+  },
+  {
+    "name": "Accra, GH, DATAPACKET",
+    "ip": "102.214.66.39",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Africa"
+  },
+  {
+    "name": "Accra, GH, DATAPACKET",
+    "ip": "102.214.66.19",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Africa"
+  },
+  {
+    "name": "Banjul, GM, Pura",
+    "ip": "212.60.92.134",
+    "port": 60003,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Africa"
+  },
+  {
+    "name": "Bata, GQ, Guineanet",
+    "ip": "105.235.237.2",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Africa"
+  },
+  {
+    "name": "Bata, GQ, Guine@net",
+    "ip": "gw1.malabo.guineanet.net",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Africa"
+  },
+  {
+    "name": "Nairobi, KE, Mymanga",
+    "ip": "speed.mymanga.pro",
+    "port": 9240,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Africa"
+  },
+  {
+    "name": "Floreal, MU, Mauritius Telecom",
+    "ip": "speedtestfl.telecom.mu",
+    "port": 5209,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Africa"
+  },
+  {
+    "name": "Floreal, MU, Mauritius Telecom",
+    "ip": "197.227.12.18",
+    "port": 5209,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "",
+    "continent": "Africa"
+  },
+  {
+    "name": "Kampala, UG, DATAPACKET",
+    "ip": "41.210.185.162",
+    "port": 5201,
+    "protocols": [
+      "tcp",
+      "udp"
+    ],
+    "type": "internet",
+    "speed": "2x10",
+    "continent": "Africa"
+  },
+  {
+    "name": "Johannesburg, ZA, FortiSASE",
+    "ip": "69.48.239.124",
+    "port": 30009,
+    "protocols": [
+      "tcp"
+    ],
+    "type": "internet",
+    "speed": "10",
+    "continent": "Africa"
+  }
+]
