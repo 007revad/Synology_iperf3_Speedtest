@@ -24,6 +24,15 @@ echo "" >> "$VAR_DIR/install.log"
 log_message "Post-installation starting for package: $PKG_NAME"
 log_message "Running as $(id -un) (uid=$(id -u), gid=$(id -g))"
 
+# Copy default iperf3_internet_servers to var if it's missing (new install)
+if [[ ! -f "${VAR_DIR}/iperf3_internet_servers.json" ]]; then
+    if cp -p "${BIN_DIR}/iperf3_internet_servers.json" "${VAR_DIR}/iperf3_internet_servers.json"; then
+        log_message "Copied iperf3_internet_servers to var"
+    else
+        log_message "Failed to copy iperf3_internet_servers to var"
+    fi
+fi
+
 # Remove spurious files injected by the package builder
 rm -f "$UI_DIR/Makefile"
 rm -f "$UI_DIR/ui"  # self-referencing symlink

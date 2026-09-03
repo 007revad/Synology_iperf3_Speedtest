@@ -164,7 +164,7 @@ print(json.dumps([all_servers[i] for i in indexes]))
     synosetkeyvalue "$CONF_FILE" default_target "$NEW_TARGET"
     synosetkeyvalue "$CONF_FILE" default_port "$NEW_PORT"
     synosetkeyvalue "$CONF_FILE" shared_secret "$NEW_SECRET"
-    echo "$NEW_INTERNET_LIST" > "${BIN_DIR}/iperf3_internet_servers.json"
+    echo "$NEW_INTERNET_LIST" > "${VAR_DIR}/iperf3_internet_servers.json"
 
     SAVED_TARGET=$(synogetkeyvalue "$CONF_FILE" default_target 2>/dev/null)
     SAVED_SECRET=$(synogetkeyvalue "$CONF_FILE" shared_secret 2>/dev/null)
@@ -263,7 +263,7 @@ print(json.dumps(items))
     ;;
 
 internetservers)
-    LIST_FILE="${BIN_DIR}/iperf3_internet_servers.json"
+    LIST_FILE="${VAR_DIR}/iperf3_internet_servers.json"
     if [ -f "$LIST_FILE" ]; then
         RESULT=$(cat "$LIST_FILE")
     else
