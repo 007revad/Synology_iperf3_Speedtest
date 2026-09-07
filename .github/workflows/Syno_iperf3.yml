@@ -127,7 +127,7 @@ jobs:
             evansport) expect_arch="Intel 80386" ;;
             *) echo "::error::No expected ELF arch mapped for '${{ matrix.arch }}'"; exit 1 ;;
           esac
-          bin="src/bin/iperf3"
+          bin="src/bin/iperf3/iperf3"
           file_out=$(file -b "$bin")
           echo "iperf3: $file_out"
           case "$file_out" in
