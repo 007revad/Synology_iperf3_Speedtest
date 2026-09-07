@@ -1,3 +1,6 @@
+v1.0.9
+- Bug fix for failing to install on alpine, alpine4k, armada370, armada375, armada38x, armadaxp, monaco, comcerto2k and evansport.
+
 v1.0.8
 - Bug fix for user selected public iperf3 servers not persisting after an upgrade or uninstall/re-install.
 
