@@ -5,6 +5,7 @@ env:
   REPO_NAME: "Synology_iperf3_Speedtest"
   SPK_PREFIX: "Synoiperf3"
   #HELPER_NAME: "synoiperf3"
+  MAIN_JS_NAME: "main"
 
   # --- Runner config, shouldn't need to change ---
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -17,9 +18,6 @@ on:
         description: 'Version for this test build (also used to name the downloadable artifact zip - never published)'
         required: false
         default: ''
-
-permissions:
-  contents: write
 
 jobs:
   build-test-spk:
@@ -124,6 +122,18 @@ jobs:
               ;;
           esac
 
+      - name: Version-stamp main.js filename
+        # Also edits config to match new main.js file name
+        # Forces DSM to load current file and not cached file after package update
+        run: |
+          set -euo pipefail
+          version="${{ steps.get_tag.outputs.new_tag }}"
+          version="${version#v}"   # v1.0.27 -> 1.0.27, to match SYNOPKG_PKGVER
+          mv src/ui/${MAIN_JS_NAME}.js "src/ui/${MAIN_JS_NAME}-${version}.js"
+          sed -i "s/\"${MAIN_JS_NAME}\.js\":/\"${MAIN_JS_NAME}-${version}.js\":/" src/ui/config
+          grep -q "\"${MAIN_JS_NAME}-${version}\.js\"" src/ui/config \
+          || { echo "::error::config was not updated with ${MAIN_JS_NAME}-${version}.js"; exit 1; }
+
       - name: Synology Package Builder Github Action
         #uses: tomgrv/synology-package-builder@v1.3.0
         uses: 007revad/synology-package-builder@main
@@ -180,7 +190,7 @@ jobs:
       - name: Remove debug spk and rename package
         run: |
           ls -l ./dist
-          rm ./dist/*_debug.spk
+          rm -f ./dist/*_debug.spk
           for f in ./dist/*.spk; do
             mv "$f" "./dist/${SPK_PREFIX}-${{ steps.arch_label.outputs.label }}-${{ steps.get_tag.outputs.new_tag }}-${{ steps.dsm_suffix.outputs.suffix }}.spk"
           done
